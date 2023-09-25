@@ -1,5 +1,6 @@
 package com.mapgameserverapplication;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mapgameserverapplication.lists.Mapper;
 import com.mapgameserverapplication.objects.Player;
 import org.apache.catalina.util.ServerInfo;
@@ -30,8 +31,8 @@ public class Controller {
     }
 
     @GetMapping("/getServerInfo")
-    public Mapper getServerInfo() {
-        return mapper;
+    public String getServerInfo() {
+        return mapper.toString();
     }
 
 }

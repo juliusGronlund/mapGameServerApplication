@@ -39,4 +39,11 @@ public class Mapper {
         matches.clear();
     }
 
+    @Override
+    public String toString() {
+        return "Mapper{" +
+                "unmatchedPlayers=" + unmatchedPlayers +
+                ", matches=" + matches +
+                '}';
+    }
 }

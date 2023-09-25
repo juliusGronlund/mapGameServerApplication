@@ -18,4 +18,12 @@ public class Matches {
         seekers.clear();
         hiders.clear();
     }
+
+    @Override
+    public String toString() {
+        return "Matches{" +
+                "seekers=" + seekers +
+                ", hiders=" + hiders +
+                '}';
+    }
 }

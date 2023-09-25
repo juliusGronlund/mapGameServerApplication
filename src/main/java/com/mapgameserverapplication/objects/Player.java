@@ -16,4 +16,12 @@ public class Player {
     public boolean isSeeker() {
         return seeker;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "password='" + password + '\'' +
+                ", seeker=" + seeker +
+                '}';
+    }
 }
