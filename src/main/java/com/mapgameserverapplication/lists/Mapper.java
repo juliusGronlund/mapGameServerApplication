@@ -16,6 +16,12 @@ public class Mapper {
     public boolean checkMatch(Player player) {
         for(Player p : unmatchedPlayers) {
             logger.trace(p.getPassword() + " " + p.isSeeker());
+
+            //Om spelare redan är i unmatchedPlayers och väntar på en annan spelare
+            if(p.getPassword().equals(player.getPassword()) &&
+            p.isSeeker() == player.isSeeker())
+                return false;
+
             //Om det är matchning på password och de har olika roller
             if(p.getPassword().equals(player.getPassword()) &&
             p.isSeeker() != player.isSeeker()) {
@@ -26,6 +32,11 @@ public class Mapper {
         }
         unmatchedPlayers.add(player);
         return false;
+    }
+
+    public void clearAll() {
+        unmatchedPlayers.clear();
+        matches.clear();
     }
 
 }

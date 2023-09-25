@@ -11,6 +11,11 @@ public class Matches {
 
     public void matchPlayers(Player seeker, Player hider) {
         seekers.add(seeker);
-        seekers.add(hider);
+        hiders.add(hider);
+    }
+
+    public void clear() {
+        seekers.clear();
+        hiders.clear();
     }
 }

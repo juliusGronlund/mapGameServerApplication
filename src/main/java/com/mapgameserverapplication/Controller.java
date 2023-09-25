@@ -2,6 +2,7 @@ package com.mapgameserverapplication;
 
 import com.mapgameserverapplication.lists.Mapper;
 import com.mapgameserverapplication.objects.Player;
+import org.apache.catalina.util.ServerInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,21 @@ public class Controller {
     public boolean hasConnection (@RequestParam String password, @RequestParam Boolean seeker) {
         Player player = new Player(password, seeker);
         return mapper.checkMatch(player);
+    }
+
+    //Endpoint för att rensa alla spelare och matcher
+    @GetMapping("/clearAll")
+    public boolean clearAll(@RequestParam String myPassword) {
+        if(myPassword.equals("snorlaxenclear")) {
+            mapper.clearAll();
+            return true;
+        }
+        return false;
+    }
+
+    @GetMapping("/getServerInfo")
+    public Mapper getServerInfo() {
+        return mapper;
     }
 
 }
