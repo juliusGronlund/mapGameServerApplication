@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Player {
     private String password;
     private boolean seeker;
+    private LatLngLocation lastKnownLocation; //Gör om den till lämplig klass
 
     public Player(String password, boolean seeker) {
         this.password = password;
@@ -17,6 +18,16 @@ public class Player {
 
     public boolean isSeeker() {
         return seeker;
+    }
+
+    public LatLngLocation getLastKnownLocation() { //Kanske lite exception här
+        if(lastKnownLocation == null)
+            return new LatLngLocation(0, 0); //0
+        return lastKnownLocation;
+    }
+
+    public void setLastKnownLocation(LatLngLocation lastKnownLocation) {
+        this.lastKnownLocation = lastKnownLocation;
     }
 
     @Override

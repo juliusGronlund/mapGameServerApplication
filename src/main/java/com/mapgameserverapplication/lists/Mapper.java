@@ -1,5 +1,6 @@
 package com.mapgameserverapplication.lists;
 
+import com.mapgameserverapplication.objects.LatLngLocation;
 import com.mapgameserverapplication.objects.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,20 @@ public class Mapper {
             }
         }
         unmatchedPlayers.add(player);
+        return false;
+    }
+
+    public LatLngLocation getLastKnownLocation(Player player) {
+        return matches.getLastKnownLocation(player);
+    }
+
+    public boolean setLastKnownLocation(Player player, LatLngLocation latLngLocation) {
+        return matches.setLastKnownLocation(player, latLngLocation);
+    }
+
+    public boolean quitGame(String password) {
+        if (matches.containsMatch(password))
+            return true;
         return false;
     }
 
