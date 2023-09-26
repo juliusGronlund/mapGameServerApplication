@@ -1,9 +1,7 @@
 package com.mapgameserverapplication;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mapgameserverapplication.lists.Mapper;
 import com.mapgameserverapplication.objects.Player;
-import org.apache.catalina.util.ServerInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

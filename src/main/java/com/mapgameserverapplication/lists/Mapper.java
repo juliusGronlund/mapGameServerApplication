@@ -9,11 +9,18 @@ import java.util.Set;
 
 public class Mapper {
     private Set<Player> unmatchedPlayers = new HashSet<>();
+    private Set<Player> returnTrueMessagePlayers = new HashSet<>();
     private Matches matches = new Matches();
 
     Logger logger = LoggerFactory.getLogger(Mapper.class);
 
     public boolean checkMatch(Player player) {
+
+        for(Player p : returnTrueMessagePlayers) {
+            if(p.equals(player)) //Kan finnas problem här om flera spelare skriver in samma lösenord osv. Kanske lösa i framtiden med ett id från enheten
+                return true; //Match is already started
+        }
+
         for(Player p : unmatchedPlayers) {
             logger.trace(p.getPassword() + " " + p.isSeeker());
 
@@ -27,6 +34,7 @@ public class Mapper {
             p.isSeeker() != player.isSeeker()) {
                 unmatchedPlayers.remove(p);
                 matches.matchPlayers(p, player);
+                returnTrueMessagePlayers.add(p); //Addar p för att sedan kunna skicka tillbaka en true-signal vid nästa förfrågan
                 return true;
             }
         }
